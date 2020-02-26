@@ -36,6 +36,12 @@ Now you are in the piWeatherman directory, now we are going to install some of t
 $ sh install.sh
 ```
 
+To run application without installing dependencies (useful if dependencies have been updated recently):
+
+```bash
+$ python3.5 app.py
+```
+
 You are then greeted with a Registration Form, just fill it in and make sure to get your API Key from [OpenWeatherMap](https://openweathermap.org/api) and your locality.
 
 For example : Jakarta, Indonesia
