@@ -36,7 +36,7 @@ Now you are in the piWeatherman directory, now we are going to install some of t
 $ sh install.sh
 ```
 
-To run application without installing dependencies (useful if dependencies have been installed and API account already created):
+To run application quickly (useful if dependencies have been installed and API account already created):
 
 ```bash
 $ python3.5 app.py
