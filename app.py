@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
-import json
-import time
-import random
+import os, sys, json, time, random, requests
 from datetime import datetime
 
 from module.uimap import *
 from module.weather_api import OpenWeatherAPI
-
-import requests
 
 try :
     import Tkinter as tkinter
@@ -166,14 +160,17 @@ class App:
 
             env_detail_label.configure(background=ACCENT, foreground=FOREGROUND)
 
-            # Change this if you want to switch (default : Celcius)
+            # Change this if you want to switch temperature units (default : Celcius)
             k_to_c = int(weather_now['main']['temp'] - 273)
-            k_to_f = (weather_now['main']['temp'] - 32) * (5/9)
+            k_to_f = round(((weather_now['main']['temp'] - 273) * 1.8) + 32, 1)
 
+            # Conversion from m/s to mph
+            ms_to_mph = round(weather_now['wind']['speed'] * 2.237, 1)
+            
             temp_giant_label.configure(
-                text='{temp}°C'.format(temp=k_to_c), background=WHITE, foreground=ACCENT)
+                text='{temp}°F'.format(temp=k_to_f), background=WHITE, foreground=ACCENT)
             wind_label.configure(
-                text='Wind Speed : {wind} m/s'.format(wind=weather_now['wind']['speed']),
+                text='Wind Speed : {wind} mph'.format(wind=ms_to_mph),
                 background=WHITE, foreground=ACCENT)
             humid_label.configure(
                 text='Humidity : {humid}%'.format(humid=weather_now['main']['humidity']),
